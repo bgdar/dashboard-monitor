@@ -1,0 +1,23 @@
+{
+  "name": "dashboard-monitor",
+  "version": "1.0.0",
+  "description": "web dasboard monitoring sistem untuk memantau performa, keamanan, dan aktivitas jaringan atau server dalam suatu sistem",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgdar/dashboard-monitor.git"
+  },
+  "author": "bg dar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgdar/dashboard-monitor/issues"
+  },
+  "homepage": "https://github.com/bgdar/dashboard-monitor#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "ts-node": "^10.9.2"
+  }
+}
