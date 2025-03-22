@@ -1,12 +1,47 @@
-# React + Vite
+# Dashboard monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Teknologi
 
-Currently, two official plugins are available:
+1. chart.js & react-chartjs-2 => untuk menggambar grafick
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## package manager pnpm
 
-## Expanding the ESLint configuration
+hasil kompilasi ke code html,js.css akan di kirim ke server untuk di handle
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎨 Default Color
+
+- **Warna Dasar**
+
+  - `--primary-color`: rgb(191, 196, 222) (Warna utama/acuan)
+
+- **Warna Latar**
+
+  - `--background-light`: rgb(230, 233, 250) (Latar belakang terang)
+  - `--background-dark`: rgb(150, 155, 185) (Latar belakang gelap)
+
+- **Warna Kartu (Card)**
+
+  - `--card-bg`: rgb(210, 215, 240) (Warna card)
+  - `--card-border`: rgb(170, 175, 205) (Border card)
+
+- **Warna Teks**
+
+  - `--text-primary`: rgb(50, 55, 90) (Warna teks utama)
+  - `--text-secondary`: rgb(80, 85, 120) (Warna teks sekunder)
+  - `--text-muted`: rgb(120, 125, 150) (Warna teks redup)
+
+- **Warna Border**
+
+  - `--border-light`: rgb(180, 185, 210) (Border terang)
+  - `--border-dark`: rgb(140, 145, 170) (Border gelap)
+
+- **Warna Interaktif**
+
+  - `--button-primary`: rgb(100, 105, 150) (Tombol utama)
+  - `--button-hover`: rgb(80, 85, 130) (Tombol saat hover)
+  - `--button-disabled`: rgb(160, 165, 200) (Tombol nonaktif)
+
+- **Warna Status**
+  - `--success-color`: rgb(80, 180, 80) (Warna sukses)
+  - `--warning-color`: rgb(230, 180, 80) (Warna peringatan)
+  - `--error-color`: rgb(220, 80, 80) (Warna error)

@@ -1,42 +1,117 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ------------[default handle] */
+:root {
+  /* Warna Dasar */
+  --primary-color: rgb(191, 196, 222);
+
+  /* Background & Border */
+  --background-light: rgb(230, 233, 250);
+  --background-dark: rgb(150, 155, 185);
+  --card-bg: rgb(210, 215, 240);
+  --border-color: rgb(170, 175, 205);
+
+  /* Text */
+  --text-primary: rgb(50, 55, 90);
+  --text-secondary: rgb(80, 85, 120);
+  --text-muted: rgb(120, 125, 150);
+
+  /* Interactive */
+  --button-primary: rgb(100, 105, 150);
+  --button-hover: rgb(80, 85, 130);
+  --button-disabled: rgb(160, 165, 200);
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.container-App {
+  display: flex;
+  transition: all 0.5s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ------------[Button] */
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--button-primary);
+  color: white;
+  transition: 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.button:hover {
+  background-color: var(--button-hover);
 }
 
+.button:disabled {
+  background-color: var(--button-disabled);
+  cursor: not-allowed;
+}
+
+/* ------------[Card] */
 .card {
-  padding: 2em;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
 }
 
-.read-the-docs {
-  color: #888;
+/* ------------[Input] */
+.input {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+  color: var(--text-primary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--button-primary);
+  box-shadow: 0 0 5px var(--button-primary);
+}
+
+/* ------------[Table] */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+  background-color: var(--background-dark);
+  color: white;
+}
+
+/* ------------[Sidebar] */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--background-dark);
+  padding: 1rem;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* ------------[Container] */
+.container {
+  margin-left: 260px; /* Untuk menyesuaikan dengan sidebar */
+  padding: 2rem;
 }

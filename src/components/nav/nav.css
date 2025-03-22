@@ -1,0 +1,68 @@
+:root {
+  /* Warna Dasar */
+  --primary-color: rgb(191, 196, 222); /* Warna utama (acuan) */
+
+  /* Warna Latar */
+  --background-light: rgb(230, 233, 250); /* Latar belakang terang */
+  --background-dark: rgbs(150, 155, 185); /* Latar belakang gelap */
+
+  /* Warna Kartu (Card) */
+  --card-bg: rgb(210, 215, 240); /* Warna card */
+  --card-border: rgb(170, 175, 205); /* Border card */
+
+  /* Warna Teks */
+  --text-primary: rgb(50, 55, 90); /* Warna teks utama */
+  --text-secondary: rgb(80, 85, 120); /* Warna teks sekunder */
+  --text-muted: rgb(120, 125, 150); /* Warna teks redup */
+
+  /* Warna Border */
+  --border-light: rgb(180, 185, 210); /* Border terang */
+  --border-dark: rgb(140, 145, 170); /* Border gelap */
+
+  /* Warna Interaktif */
+  --button-primary: rgb(100, 105, 150); /* Tombol utama */
+  --button-hover: rgb(80, 85, 130); /* Tombol saat hover */
+  --button-disabled: rgb(160, 165, 200); /* Tombol nonaktif */
+
+  /* Warna Status */
+  --success-color: rgb(80, 180, 80); /* Warna sukses */
+  --warning-color: rgb(230, 180, 80); /* Warna peringatan */
+  --error-color: rgb(220, 80, 80); /* Warna error */
+}
+
+nav {
+  border: 2px solid darkblue;
+  background-color: var(--background-dark);
+  overflow: hidden;
+  border-radius: 8px;
+  align-items: center;
+  /* position: fixed;
+  top: 20px;
+  left: 0; */
+  transition: 0.2s;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+nav .button-nav {
+  margin: 0.7rem;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+nav ul li {
+  margin: 0.5rem;
+  border: 2px solid;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.8rem;
+  background-color: var(--border-dark);
+  font-family: Georgia;
+}
+
+nav ul li:hover {
+  transition: bacground-color 0.5s;
+  transition: 0.2s;
+  background-color: var(--button-hover);
+}
