@@ -31,7 +31,7 @@
 }
 
 nav {
-  border: 2px solid darkblue;
+  border: 2px solid var(--border-light);
   background-color: var(--background-dark);
   overflow: hidden;
   border-radius: 8px;
@@ -40,9 +40,10 @@ nav {
   top: 20px;
   left: 0; */
   transition: 0.2s;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
 }
 nav .button-nav {
+  transition: 0.2s;
   margin: 0.7rem;
 }
 nav ul {

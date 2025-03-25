@@ -1,8 +1,9 @@
 import "./App.css";
 import { useSistem } from "./sistem/useSistem";
-import Navbar from "./components/nav/navbar";
-import CpuPage from "./components/CPU/cpuPage";
-import NetworkPage from "./components/NETWORK/networkPage";
+import Navbar from "./nav/navbar";
+import Descripsi from "./DES/descriptionPage";
+import CpuPage from "./CPU/cpuPage";
+import NetworkPage from "./NETWORK/networkPage";
 
 function App() {
   const { activeTaskId } = useSistem();
@@ -23,6 +24,7 @@ function App() {
             <p>Task aktif: {task.task}</p>
           </div>
 ))} */}
+      <Descripsi />
     </div>
   );
 }

@@ -1,0 +1,9 @@
+#section-cpu {
+  width: 100%;
+  align-items: center;
+}
+
+#section-cpu div.cpu-component {
+  max-width: 80%;
+  margin: auto;
+}

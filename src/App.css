@@ -21,14 +21,16 @@
 }
 body {
   margin: 0;
-  padding: 0;
+  padding: 0.3rem;
+  overflow: hidden;
 }
 .container-App {
   display: flex;
+  justify-content: space-between;
   transition: all 0.5s;
 }
 
-/* ------------[Button] */
+/* ------------[styleg  global  siap pakai] */
 .button {
   cursor: pointer;
   border: none;
@@ -49,8 +51,6 @@ body {
   background-color: var(--button-disabled);
   cursor: not-allowed;
 }
-
-/* ------------[Card] */
 .card {
   background-color: var(--card-bg);
   border-radius: 1rem;
@@ -59,8 +59,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-color);
 }
-
-/* ------------[Input] */
 .input {
   width: 100%;
   padding: 0.6rem;
@@ -71,14 +69,11 @@ body {
   background-color: white;
   color: var(--text-primary);
 }
-
 .input:focus {
   outline: none;
   border-color: var(--button-primary);
   box-shadow: 0 0 5px var(--button-primary);
 }
-
-/* ------------[Table] */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -97,8 +92,6 @@ body {
   background-color: var(--background-dark);
   color: white;
 }
-
-/* ------------[Sidebar] */
 .sidebar {
   width: 250px;
   height: 100vh;
@@ -109,8 +102,6 @@ body {
   left: 0;
   top: 0;
 }
-
-/* ------------[Container] */
 .container {
   margin-left: 260px; /* Untuk menyesuaikan dengan sidebar */
   padding: 2rem;
