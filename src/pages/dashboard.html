@@ -7,5 +7,24 @@
   </head>
   <body>
     <p>monitoe tets</p>
+    <div id="data"></div>
+    <p id="platform"></p>
+
+    <script>
+      console.log("Menyambungkan ke EventSource...");
+      const eventSource = new EventSource("/event-cpu");
+
+      eventSource.onopen = () => {
+        console.log("✅ SSE Terhubung!");
+      };
+      eventSource.onmessage = (event) => {
+        console.log("Data diterima:", event.data);
+        const data = JSON.parse(event.data);
+        document.getElementById("data").innerText = data.persentase_cpu;
+      };
+      eventSource.onerror = () => {
+        console.log("❌ SSE error atau koneksi terputus!");
+      };
+    </script>
   </body>
 </html>
