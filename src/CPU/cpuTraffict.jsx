@@ -11,6 +11,8 @@ import {
   Filler,
 } from "chart.js";
 
+import { useSistem } from "../sistem/useSistem";
+
 Chart.register(
   CategoryScale,
   LinearScale,
@@ -22,23 +24,10 @@ Chart.register(
   Filler
 );
 
-const data = {
-  // labels : cpuLabels, dapatkan dari state
-  labels: Array.from({ length: 20 }, (_, i) => i + 1),
-  datasets: [
-    {
-      label: "cpu usage {:%}",
-      // data:cpudata, dapatka dari state
-      data: Array.from({ length: 50 }, () => Math.random() * 100), // Nilai acak antara 0-100
-      borderColor: "red",
-      backgroundColor: "rgba(255, 0, 0, 0.2)",
-      borderWidth: 2,
-      fill: true,
-    },
-  ],
-};
 const options = {
   responsive: true,
+  maintainAspectRatio: false, // 🔥 Hindari rasio tetap agar lebih fleksibel | grafict mengikuti ukuran perrenta nya
+
   scales: {
     x: {
       title: {
@@ -58,6 +47,50 @@ const options = {
 };
 
 const CpuTraffict = () => {
+  // const [cpuLimit, setCpuLimit] = useState([]);
+  // const [label, setLabels] = useState([]);
+
+  // useEffect(() => {
+  //   // saat masa produksi nanti ubah ke /event-cpu saja
+  //   const cpuEventSource = new EventSource("http://127.0.0.1:5000/event-cpu");
+
+  //   cpuEventSource.onopen = () => {
+  //     console.log(" terhubung ...");
+  //   };
+  //   cpuEventSource.onmessage = (event) => {
+  //     const data = JSON.parse(event.data);
+  //     const newData = parseFloat(data.persentase_cpu);
+
+  //     const timestamp = new Date().toLocaleTimeString();
+
+  //     setCpuLimit((prev) => [...prev.slice(-9), newData]);
+  //     setLabels((prev) => [...prev.slice(-9), timestamp]);
+  //   };
+
+  //   cpuEventSource.onerror = (err) => {
+  //     console.error("terjadi erro", err);
+  //     cpuEventSource.close();
+  //   };
+  // });
+
+  const { label, cpuLimit } = useSistem();
+
+  const data = {
+    // labels : cpuLabels, dapatkan dari state
+    labels: label,
+    datasets: [
+      {
+        label: "cpu usage {:%}",
+        // data:cpudata, dapatka dari state
+        data: cpuLimit,
+        borderColor: "red",
+        backgroundColor: "rgba(255, 0, 0, 0.2)",
+        borderWidth: 2,
+        fill: true,
+      },
+    ],
+  };
+
   return <Line data={data} options={options} />;
 };
 
