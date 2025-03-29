@@ -1,13 +1,18 @@
 import { createContext, useRef, useState, useEffect } from "react";
 import { MdNetworkWifi } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
 import { BsCpu } from "react-icons/bs";
+import { LuHardDrive } from "react-icons/lu";
+
 // Definisikan tipe context (jika pakai TypeScript)
 const defaultValue = {
   showTask: [],
+  showTaskRights: [],
   setActiveTaskId: () => null,
   activeTaskId: null,
   handleShowTask: () => null,
   addTask: () => {},
+  addTaskRight: () => {},
   cpuLimit: [],
   label: [],
 };
@@ -18,16 +23,26 @@ const SistemProvider = ({ children }) => {
   const [showTask, setShowTask] = useState([
     { id: 1, task: "Cpu", icon: <BsCpu /> },
     { id: 2, task: "Network", icon: <MdNetworkWifi /> },
+    { id: 3, task: "Memory", icon: <LuHardDrive /> },
   ]);
 
-  const [activeTaskId, setActiveTaskId] = useState(null); // State untuk ID task yang aktif
+  const [showTaskRights, setShowTaskRights] = useState([
+    { id: 1, task: "Home", icon: <FaHome /> },
+  ]);
+
+  const [activeTaskId, setActiveTaskId] = useState(null); // State untuk ID task yang aktif(page yang aktive)
+
   // Fungsi untuk menambahkan task baru
   const addTask = (task) => {
     setShowTask((prev) => [...prev, { id: showTask.length + 1, task }]);
     //gunakan seperti () => addTask("Network")
   };
+  const addTaskRight = (task) => {
+    setShowTaskRights((prev) => [...prev, { id: showTask.length + 1, task }]);
+    //gunakan seperti () => addTask("Network")
+  };
 
-  //----------[cpu data usage]-------
+  //----------[ real-time data usage]-------
   const [cpuLimit, setCpuLimit] = useState([]);
   const [label, setLabels] = useState([]);
 
@@ -91,7 +106,9 @@ const SistemProvider = ({ children }) => {
     <SistemContext.Provider
       value={{
         showTask,
+        showTaskRights,
         addTask,
+        addTaskRight,
         activeTaskId,
         setActiveTaskId,
         label,

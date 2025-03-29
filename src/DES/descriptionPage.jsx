@@ -15,6 +15,7 @@ const Descripsi = () => {
     <div>
       <button
         className="button button-des"
+        style={{ width: `${showDes ? "22vw" : ""}` }}
         type="button"
         onClick={handleShowDes}
         aria-expanded={showDes}

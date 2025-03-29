@@ -4,6 +4,10 @@
 
 1. chart.js & react-chartjs-2 => untuk menggambar grafick
 
+## Screenshot
+
+![dasboard monitoring](./img/dasboard-monitoring.png)
+
 ## package manager pnpm
 
 hasil kompilasi ke code html,js.css akan di kirim ke server untuk di handle

@@ -1,6 +1,6 @@
 //import { useEffect } from "react";
 import "./network.css";
-import WifiTraffic from "./wifiTraffict";
+import NetworkTraffic from "./networkTraffict";
 
 const NetworkPage = () => {
   // //ambil data network yang dikirimkan server
@@ -9,11 +9,11 @@ const NetworkPage = () => {
   // },[])
 
   return (
-    <div id="section-net">
+    <section id="section-net">
       <div className="section-net-wifi">
-        <WifiTraffic />
+        <NetworkTraffic />
       </div>
-    </div>
+    </section>
   );
 };
 

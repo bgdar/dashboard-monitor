@@ -1,12 +1,10 @@
-#section-net {
+section#section-net {
   text-align: center;
   align-items: center;
-  border: 2px solid;
-
   width: 100%;
 }
 
-#section-net .section-net-wifi {
+section#section-net .section-net-wifi {
   width: 80%;
   margin: auto;
 }

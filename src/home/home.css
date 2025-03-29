@@ -1,0 +1,86 @@
+/* Warna dasar */
+
+/* Container utama */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Judul */
+main h3.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Deskripsi */
+main div.description {
+  margin: 15px 0;
+  text-align: center;
+}
+
+main div.description p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Petunjuk */
+main div.guide {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  text-align: left;
+
+  max-width: 500px;
+}
+
+main div.guide table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+main div.guide th,
+main div.guide td {
+  border: 1px solid var(--border-dark);
+  padding: 8px;
+  text-align: left;
+}
+
+main div.guide th {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Footer */
+main footer.footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  display: flex;
+  color: var(--text-secondary);
+}
+
+main footer.footer p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+main footer.footer a {
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+main footer.footer a:hover {
+  color: var(--button-hover);
+}

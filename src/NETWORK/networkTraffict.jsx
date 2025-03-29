@@ -35,14 +35,6 @@ const data = {
       borderWidth: 3, // Ketebalan garis
       fill: false, // Tidak mengisi area di bawah garis
     },
-    // {
-    //   label: "Data 2", // Nama dataset kedua
-    //   data: Array.from({ length: 50 }, () => Math.random() * 100), // Nilai acak
-    //   borderColor: "rgba(75, 192, 192, 1)", // Warna hijau
-    //   backgroundColor: "rgba(75, 192, 192, 0.2)",
-    //   borderWidth: 2,
-    //   fill: false,
-    // }
   ],
 };
 
@@ -59,7 +51,7 @@ const options = {
   },
 };
 
-const WifiTraffic = () => {
+const NetworkTraffic = () => {
   return (
     <div>
       <Line data={data} options={options} />
@@ -67,4 +59,4 @@ const WifiTraffic = () => {
   );
 };
 
-export default WifiTraffic;
+export default NetworkTraffic;

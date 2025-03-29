@@ -2,8 +2,12 @@ import "./App.css";
 import { useSistem } from "./sistem/useSistem";
 import Navbar from "./nav/navbar";
 import Descripsi from "./DES/descriptionPage";
+
 import CpuPage from "./CPU/cpuPage";
 import NetworkPage from "./NETWORK/networkPage";
+
+import HomePage from "./home/homePage";
+import MemoryPage from "./memory/memoryPage";
 
 function App() {
   const { activeTaskId } = useSistem();
@@ -14,16 +18,9 @@ function App() {
       {/* Menampilkan halaman berdasarkan task yang aktif */}
       {activeTaskId === 1 && <CpuPage />}
       {activeTaskId === 2 && <NetworkPage />}
+      {activeTaskId === 3 && <MemoryPage />}
+      {activeTaskId == null && <HomePage />}
 
-      {/* {showTask
-        .filter((task) => task.id === activeTaskId) // Hanya task yang dipilih yang ditampilkan
-        .map((task) => (
-          <div key={task.id}>
-            {task.task === "CPU" && <CpuPage />}
-            {task.task === "NETWORK" && <div>Network Page</div>}
-            <p>Task aktif: {task.task}</p>
-          </div>
-))} */}
       <Descripsi />
     </div>
   );

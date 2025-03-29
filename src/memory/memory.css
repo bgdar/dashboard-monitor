@@ -1,0 +1,11 @@
+section.memory {
+  width: 100%;
+  align-items: center;
+  height: 100%;
+}
+
+section.memory div {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+}
