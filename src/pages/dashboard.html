@@ -9,10 +9,18 @@
     <p>monitoe tets</p>
     <div id="data"></div>
     <p id="platform"></p>
+    <br />
+    <h3>persentase_network</h3>
+    <div>
+      dowload
+      <p id="download"></p>
+      mb/s
+    </div>
+    <p id="upload"></p>
 
     <script>
       console.log("Menyambungkan ke EventSource...");
-      const eventSource = new EventSource("/event-cpu");
+      const eventSource = new EventSource("/event");
 
       eventSource.onopen = () => {
         console.log("✅ SSE Terhubung!");
@@ -21,6 +29,11 @@
         console.log("Data diterima:", event.data);
         const data = JSON.parse(event.data);
         document.getElementById("data").innerText = data.persentase_cpu;
+
+        document.getElementById("download").innerText =
+          data.persentase_network.download;
+        document.getElementById("upload").innerText =
+          data.persentase_network.upload;
       };
       eventSource.onerror = () => {
         console.log("❌ SSE error atau koneksi terputus!");

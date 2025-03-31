@@ -1,5 +1,5 @@
-import { promises } from "dns";
 import os from "os";
+import systemInformation from "systeminformation";
 
 class Sistem {
   platfrom = os.platform();
@@ -47,6 +47,20 @@ class Sistem {
     });
   }
 
+  //----------[System informasi]----------
+  async persentase_network() {
+    const stats = await systemInformation.networkStats();
+    const data = {
+      download: (stats[0].rx_sec / 1024 / 1024).toFixed(2), // MB/s
+      upload: (stats[0].tx_sec / 1024 / 1024).toFixed(2), // MB/s
+    };
+    if (stats.length === 0) {
+      console.log("⚠️ Tidak ada jaringan yang aktif!");
+      data.download = "tidak ada jaringan yang aktif";
+      data.upload = "tidak ada jaringan yang aktif";
+    }
+    return data;
+  }
   //----------[memory]----------
   memori_info() {
     `return Object dalam nilai MB`;
@@ -58,6 +72,15 @@ class Sistem {
       total_ram: total_ram,
       ram_availebel: ram_availebel,
       memory_usage: memory_usage,
+    };
+  }
+
+  //----------[Network]----------
+  system_info() {
+    return {
+      asitekture_cpu: os.arch(),
+      version_os: os.version(),
+      mechin_used: os.machine(),
     };
   }
 }

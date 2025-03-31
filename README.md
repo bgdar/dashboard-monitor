@@ -8,6 +8,13 @@ jalankan
     pnpm exec ts-node src/server.ts
 ```
 
+## package used :
+
+1. systeminformation
+   untuk di gunanakn realtime netwokr
+
+---
+
 ## ploblem
 
 1. `beberapa data di kirimkan secara real-time dengan basis server sederhana **node.js**
