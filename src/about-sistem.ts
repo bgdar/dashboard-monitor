@@ -48,19 +48,30 @@ class Sistem {
   }
 
   //----------[System informasi]----------
-  async persentase_network() {
-    const stats = await systemInformation.networkStats();
-    const data = {
-      download: (stats[0].rx_sec / 1024 / 1024).toFixed(2), // MB/s
-      upload: (stats[0].tx_sec / 1024 / 1024).toFixed(2), // MB/s
-    };
-    if (stats.length === 0) {
-      console.log("⚠️ Tidak ada jaringan yang aktif!");
-      data.download = "tidak ada jaringan yang aktif";
-      data.upload = "tidak ada jaringan yang aktif";
+  async persentase_network(): Promise<{
+    download: string;
+    upload: string;
+  }> {
+    const allStats = await systemInformation.networkStats();
+
+    // Filter interface yang aktif dan bukan loopback
+    const filtered = allStats.find(
+      (iface) => iface.iface !== "lo" && iface.operstate === "up"
+    );
+
+    if (!filtered) {
+      return {
+        download: "0",
+        upload: "0",
+      };
     }
-    return data;
+
+    return {
+      download: ((filtered.rx_sec * 8) / 1_000_000).toFixed(2), // Mbps
+      upload: ((filtered.tx_sec * 8) / 1_000_000).toFixed(2), // Mbps
+    };
   }
+
   //----------[memory]----------
   memori_info() {
     `return Object dalam nilai MB`;
