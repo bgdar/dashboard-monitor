@@ -10,6 +10,8 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import { useSistem } from "../sistemContextManagement/useContexts";
+
 Chart.register(
   CategoryScale, // Skala kategori untuk sumbu X
   LinearScale, // Skala linier untuk sumbu Y
@@ -20,38 +22,90 @@ Chart.register(
   Legend, // Legenda untuk menjelaskan warna garis
   Filler
 );
-// 🔹 Data untuk grafik
-const data = {
-  // Label pada sumbu X (dalam kasus ini, hanya angka dari 1 sampai 50)
-  labels: Array.from({ length: 50 }, (_, i) => i + 1),
-
-  // Dataset untuk setiap garis yang akan ditampilkan
-  datasets: [
-    {
-      label: "Data 1", // Nama dataset pertama
-      data: Array.from({ length: 50 }, () => Math.random() * 100), // Nilai acak antara 0-100
-      borderColor: "rgba(54, 162, 235, 1)", // Warna biru
-      backgroundColor: "rgba(54, 162, 235, 0.2)", // Warna latar belakang (tidak digunakan karena fill: false)
-      borderWidth: 3, // Ketebalan garis
-      fill: false, // Tidak mengisi area di bawah garis
-    },
-  ],
-};
-
-// 🔹 Opsi konfigurasi grafik
 const options = {
-  responsive: true, // Grafik akan menyesuaikan ukuran layar
+  responsive: true,
+  maintainAspectRatio: true,
+  animation: {
+    duration: 500,
+    easing: "easeInOutQuad",
+  },
+  interaction: {
+    mode: "index",
+    intersect: false,
+  },
+  elements: {
+    line: {
+      tension: 0.4, // ⚠️ Ini bikin garis lebih smooth, bukan kaku
+      borderWidth: 3,
+    },
+    point: {
+      radius: 0, // titik data dihilangkan biar lebih clean
+      hoverRadius: 5,
+      hitRadius: 5,
+    },
+  },
   plugins: {
-    legend: { display: true }, // Sembunyikan legenda (jika ingin terlihat, ubah menjadi `true`)
-    title: { display: false }, // Sembunyikan judul
+    legend: {
+      display: true,
+      labels: {
+        color: "#fff", // Warna teks legend (ubah sesuai tema kamu)
+      },
+    },
+    tooltip: {
+      enabled: true,
+      backgroundColor: "#333",
+      titleColor: "#fff",
+      bodyColor: "#ddd",
+      cornerRadius: 5,
+    },
   },
   scales: {
-    x: { display: false }, // Sembunyikan label sumbu X
-    y: { display: false }, // Sembunyikan label sumbu Y
+    x: {
+      display: true,
+      grid: {
+        display: false,
+      },
+      ticks: {
+        color: "#aaa",
+      },
+    },
+    y: {
+      display: true,
+      grid: {
+        color: "rgba(255,255,255,0.05)",
+      },
+      ticks: {
+        color: "#aaa",
+        callback: (value) => `${value} Mbps`, // contoh: tampilkan satuan Mbps
+      },
+    },
   },
 };
 
 const NetworkTraffic = () => {
+  const { dowloadLimit, uploadLimit } = useSistem();
+
+  const data = {
+    labels: Array.from({ length: dowloadLimit.length }, (_, i) => `T${i + 1}`),
+    datasets: [
+      {
+        label: "Download",
+        data: dowloadLimit,
+        borderColor: "rgba(54, 162, 235, 1)",
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        fill: true,
+        tension: 0.4,
+      },
+      {
+        label: "Upload",
+        data: uploadLimit,
+        borderColor: "rgba(32, 173, 19, 1)",
+        backgroundColor: "rgba(32, 173, 19, 0.2)",
+        fill: true,
+        tension: 0.4,
+      },
+    ],
+  };
   return (
     <div>
       <Line data={data} options={options} />

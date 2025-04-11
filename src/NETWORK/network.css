@@ -4,7 +4,22 @@ section#section-net {
   width: 100%;
 }
 
-section#section-net .section-net-wifi {
+section#section-net .section-net {
   width: 80%;
   margin: auto;
+}
+
+section .net-descripsion {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 1.2em;
+  max-width: 100%;
+}
+section .net-descripsion .section-net-info {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: larger;
 }

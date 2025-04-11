@@ -12,40 +12,11 @@
 
 hasil kompilasi ke code html,js.css akan di kirim ke server untuk di handle
 
-## 🎨 Default Color
+## skenario
 
-- **Warna Dasar**
+2. Network
+   dalam sistem pemantauan jaringan, data **download** dan **upload** yang dikumpulkan dari perangkat client menggambarkan aktivitas jaringan yang sedang berlangsung. Nilai download menunjukkan seberapa banyak data yang diterima oleh client dari internet dalam satu detik, misalnya saat streaming video, mengakses website, atau mengunduh file. Sebaliknya, nilai upload menunjukkan seberapa banyak data yang dikirimkan oleh client ke jaringan, seperti saat mengunggah dokumen, melakukan panggilan video, atau mengirimkan data ke server.
 
-  - `--primary-color`: rgb(191, 196, 222) (Warna utama/acuan)
+Sistem hanya mengambil data dari antarmuka jaringan yang aktif seperti `wlan0` untuk koneksi WiFi atau `eth0` untuk koneksi kabel LAN, dan mengabaikan antarmuka yang tidak relevan seperti `lo` (loopback). Dengan begitu, data yang ditampilkan mencerminkan kondisi nyata koneksi internet yang digunakan oleh client. Kecepatan download dan upload ini dihitung dalam Mbps (Megabit per second), yang merupakan standar dalam mengukur performa internet. Melalui informasi ini, sistem dapat menunjukkan **seberapa cepat koneksi internet yang sedang digunakan oleh client**, serta apakah jaringan sedang sibuk, lambat, atau lancar dalam menangani lalu lintas data.
 
-- **Warna Latar**
-
-  - `--background-light`: rgb(230, 233, 250) (Latar belakang terang)
-  - `--background-dark`: rgb(150, 155, 185) (Latar belakang gelap)
-
-- **Warna Kartu (Card)**
-
-  - `--card-bg`: rgb(210, 215, 240) (Warna card)
-  - `--card-border`: rgb(170, 175, 205) (Border card)
-
-- **Warna Teks**
-
-  - `--text-primary`: rgb(50, 55, 90) (Warna teks utama)
-  - `--text-secondary`: rgb(80, 85, 120) (Warna teks sekunder)
-  - `--text-muted`: rgb(120, 125, 150) (Warna teks redup)
-
-- **Warna Border**
-
-  - `--border-light`: rgb(180, 185, 210) (Border terang)
-  - `--border-dark`: rgb(140, 145, 170) (Border gelap)
-
-- **Warna Interaktif**
-
-  - `--button-primary`: rgb(100, 105, 150) (Tombol utama)
-  - `--button-hover`: rgb(80, 85, 130) (Tombol saat hover)
-  - `--button-disabled`: rgb(160, 165, 200) (Tombol nonaktif)
-
-- **Warna Status**
-  - `--success-color`: rgb(80, 180, 80) (Warna sukses)
-  - `--warning-color`: rgb(230, 180, 80) (Warna peringatan)
-  - `--error-color`: rgb(220, 80, 80) (Warna error)
+D

@@ -15,6 +15,16 @@ const options = {
         color: "#333",
       },
     },
+    tooltip: {
+      //coba ubah nantik
+      //callback untuk menampilkan persentase dengan simbol %.
+      callbacks: {
+        label: function (context) {
+          let value = context.raw;
+          return `${value}%`;
+        },
+      },
+    },
   },
   animation: {
     animateRotate: true,
@@ -28,7 +38,7 @@ const MemoryTraffict = () => {
     datasets: [
       {
         //ganti dengan label yang di dapat dari server
-        data: [5120, 8192, 2048, 1024], // Contoh dalam MB
+        data: [5120, 8192, 2048, 1024],
         backgroundColor: ["#ff6384", "#36a2eb", "#ffce56", "#4bc0c0"],
         hoverBackgroundColor: ["#ff4d6b", "#2a94d6", "#ffb100", "#3aa9a9"],
         borderWidth: 2,

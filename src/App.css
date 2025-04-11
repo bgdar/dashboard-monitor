@@ -5,7 +5,7 @@
 
   /* Warna Latar */
   --background-light: rgb(230, 233, 250); /* Latar belakang terang */
-  --background-dark: rgbs(150, 155, 185); /* Latar belakang gelap */
+  --background-dark: rgb(150, 155, 185); /* Latar belakang gelap */
 
   /* Warna Kartu (Card) */
   --card-bg: rgb(210, 215, 240); /* Warna card */

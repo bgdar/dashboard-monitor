@@ -1,9 +1,9 @@
 import "./nav.css";
 
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-import { useSistem } from "../sistem/useSistem";
+import { useSistem } from "../sistemContextManagement/useContexts";
 
 function Navbar() {
   const [showNav, setShowNav] = useState(false);
@@ -11,7 +11,6 @@ function Navbar() {
     setShowNav(!showNav);
   };
   const { showTask, showTaskRights, setActiveTaskId } = useSistem();
-
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const taskLengthRef = useRef(showTask.length);
@@ -57,7 +56,11 @@ function Navbar() {
         onClick={handleShowNav}
         type="button"
       >
-        {showNav ? <FaArrowAltCircleRight /> : <AiOutlineMenuUnfold />}
+        <div
+          style={{ transform: `${showNav ? "rotate(180deg)" : "rotate(0)"}` }}
+        >
+          {showNav ? <FaArrowAltCircleLeft /> : <AiOutlineMenuUnfold />}
+        </div>
       </button>
       {/* list items ke sebelah kanan */}
       <ul

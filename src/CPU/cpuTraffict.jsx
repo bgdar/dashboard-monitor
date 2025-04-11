@@ -11,7 +11,7 @@ import {
   Filler,
 } from "chart.js";
 
-import { useSistem } from "../sistem/useSistem";
+import { useSistem } from "../sistemContextManagement/useContexts";
 
 Chart.register(
   CategoryScale,

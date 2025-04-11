@@ -3,6 +3,7 @@ import { MdNetworkWifi } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { BsCpu } from "react-icons/bs";
 import { LuHardDrive } from "react-icons/lu";
+import { GrSystem } from "react-icons/gr";
 
 // Definisikan tipe context (jika pakai TypeScript)
 const defaultValue = {
@@ -13,8 +14,10 @@ const defaultValue = {
   handleShowTask: () => null,
   addTask: () => {},
   addTaskRight: () => {},
-  cpuLimit: [],
   label: [],
+  cpuLimit: [],
+  uploadLimit: [],
+  dowloadLimit: [],
 };
 
 const SistemContext = createContext(defaultValue);
@@ -24,6 +27,7 @@ const SistemProvider = ({ children }) => {
     { id: 1, task: "Cpu", icon: <BsCpu /> },
     { id: 2, task: "Network", icon: <MdNetworkWifi /> },
     { id: 3, task: "Memory", icon: <LuHardDrive /> },
+    { id: 4, task: "sistem info", icon: <GrSystem /> },
   ]);
 
   const [showTaskRights, setShowTaskRights] = useState([
@@ -43,61 +47,65 @@ const SistemProvider = ({ children }) => {
   };
 
   //----------[ real-time data usage]-------
+  //--------cpu
   const [cpuLimit, setCpuLimit] = useState([]);
   const [label, setLabels] = useState([]);
 
+  //--------Network
+  const [dowloadLimit, setDownloadLimit] = useState([]);
+  const [uploadLimit, setUploadLimit] = useState([]);
+
   //useRef untuk Menghindari Penumpukan Timeout yang Tidak Dihapus
+  // useRef untuk menyimpan EventSource agar tidak membuat koneksi baru
   const eventSourceRef = useRef(null);
-  const timeoutRef = useRef(null);
 
   useEffect(() => {
-    const startEventSource = () => {
-      if (eventSourceRef.current) {
-        eventSourceRef.current.close(); // Tutup EventSource lama sebelum membuat yang baru
-      }
+    if (!activeTaskId) return; // Jika tidak ada task aktif, hentikan
 
-      const cpuEventSource = new EventSource("http://127.0.0.1:5000/event-cpu");
-      eventSourceRef.current = cpuEventSource; // Simpan referensi EventSource
+    // Pastikan menutup koneksi lama sebelum membuka yang baru
+    if (eventSourceRef.current) {
+      eventSourceRef.current.close();
+    }
 
-      cpuEventSource.onopen = () => {
-        console.log("Terhubung...");
-      };
+    // ubah ke /evwnt jika ke mode production
+    eventSourceRef.current = new EventSource("http://127.0.0.1:5000/event");
 
-      cpuEventSource.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        const newData = parseFloat(data.persentase_cpu);
-        const timestamp = new Date().toLocaleTimeString();
+    eventSourceRef.current.onopen = () =>
+      console.log("🔗 Terhubung ke EventSource");
 
-        setCpuLimit((prev) => [...prev.slice(-9), newData]);
+    eventSourceRef.current.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      const timestamp = new Date().toLocaleTimeString();
+
+      if (activeTaskId === 1) {
+        // CPU Monitoring
+        setCpuLimit((prev) => [
+          ...prev.slice(-9),
+          parseFloat(data.persentase_cpu),
+        ]);
         setLabels((prev) => [...prev.slice(-9), timestamp]);
-      };
-
-      cpuEventSource.onerror = (err) => {
-        console.error("Terjadi error", err);
-        cpuEventSource.close();
-      };
+      } else if (activeTaskId === 2) {
+        // Network Monitoring
+        setDownloadLimit((prev) => [
+          ...prev.slice(-9),
+          parseFloat(data.persentase_network.download),
+        ]);
+        setUploadLimit((prev) => [
+          ...prev.slice(-9),
+          parseFloat(data.persentase_network.upload),
+        ]);
+      }
     };
 
-    if (activeTaskId === 1) {
-      startEventSource();
-    } else {
-      // Jika bukan CPU, tunggu 5 detik sebelum menutup koneksi
-      timeoutRef.current = setTimeout(() => {
-        if (eventSourceRef.current) {
-          eventSourceRef.current.close();
-          eventSourceRef.current = null;
-          console.log("EventSource dihentikan karena tidak aktif");
-        }
-      }, 5000);
-    }
+    eventSourceRef.current.onerror = (err) => {
+      console.error("❌ Terjadi error pada EventSource", err);
+      eventSourceRef.current.close();
+    };
 
     return () => {
       if (eventSourceRef.current) {
+        console.log("🔌 EventSource ditutup");
         eventSourceRef.current.close();
-        eventSourceRef.current = null;
-      }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
       }
     };
   }, [activeTaskId]);
@@ -113,6 +121,8 @@ const SistemProvider = ({ children }) => {
         setActiveTaskId,
         label,
         cpuLimit,
+        dowloadLimit,
+        uploadLimit,
       }}
     >
       {children}
